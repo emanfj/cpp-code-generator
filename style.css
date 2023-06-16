@@ -1,0 +1,39 @@
+#menu {
+    display: flex; /* Use flexbox for the menu items */
+    scroll-behavior: smooth; /* Add smooth scrolling animation */
+    overflow: hidden; /* Hide the scrollbar */
+    position: relative; /* Set position for arrow buttons */
+}
+
+#menu-items{
+        display: flex;
+        transition: transform 0.3s ease;
+        -webkit-overflow-scrolling: touch;
+
+}
+#menu-items button {
+    min-width: 200px; /* Set the width of each menu item */
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #ddd;
+}
+
+#menu .arrow {
+    position: sticky;
+    top: 10%;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#menu .arrow.left {
+    left: 0;
+}
+
+#menu .arrow.right {
+    right: 0;
+}
