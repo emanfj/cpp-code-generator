@@ -82,6 +82,7 @@ li > .sub-menu > li:hover > .sub-menu-2 {
 }
 
 #canvas {
+  font-family: "Courier New", monospace;
   left:200px;
   background-color: rgb(164, 141, 164);
   overflow-y: scroll;
@@ -90,20 +91,52 @@ li > .sub-menu > li:hover > .sub-menu-2 {
   /* border: 1px dashed purple; */
   display: block;
   height: 100%;
-  width: 500px;
+  width: 550px;
   box-sizing: border-box;
 
 }
 
-#canvas::-webkit-scrollbar {
-  width: 8px; /* Adjust the width of the scrollbar */
+.dragover {
+  border: 2px dashed purple !important;
+  background-color:rgb(175, 156, 175) !important;
+  opacity: 0.8 !important;
 }
 
-#canvas::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.2); /* Adjust the background color of the track */
+.code-block {
+  background-color:rgb(125, 93, 125);
+  padding:10px;
+  margin: 10px;
+  position:relative;
+  font-weight:bold;
+   
 }
 
-#canvas::-webkit-scrollbar-thumb {
-  background-color: purple; /* Adjust the color of the thumb */
+.delete-icon {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  margin: 5px;
+  cursor: pointer;
 }
 
+.delete-icon i {
+  font-size: 15px; /* adjust this value to make the trash icon bigger */
+  color: black; /* adjust this value to change the color of the trash icon */
+}
+
+.plus-sign {
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 30px; /* adjust this value as needed */
+  margin: 5px;
+  cursor: pointer;
+}
+
+.properties-list {
+  padding:5px;
+}
+
+.property-item {
+  padding: 2px;
+}

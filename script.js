@@ -1,5 +1,5 @@
-const draggableElement = document.querySelectorAll('.draggable');	
-const dropArea = document.getElementById('canvas');
+var draggableElement = document.querySelectorAll('.draggable');	
+var dropArea = document.getElementById('canvas');
 
 //adding event handler for all draggable elements
 draggableElement.forEach((draggableElement) => {draggableElement.addEventListener('dragstart', dragStart)});
@@ -14,17 +14,84 @@ function dragStart(event)
 //add event listeners for drop functionality
 dropArea.addEventListener('drop',drop);
 dropArea.addEventListener('dragover',dragOver);
+dropArea.addEventListener('dragleave', dragLeave); 
 
 //when element is dropped within the target
-function drop(event) {
+function drop(event) 
+{
     //prevent the default behaviour for dropped elements
     event.preventDefault();
+    dropArea.classList.remove('dragover'); //remove the 'dragover' class
     //retrieve dropped element's data
     var droppedData = event.dataTransfer.getData('text/plain');
-    //append the retrieved data to the drop target
+    
+    // create the code block container
     const codeBlock = document.createElement('div');
-    codeBlock.textContent = droppedData;
     codeBlock.className = 'code-block';
+
+    // create the delete icon
+    const deleteIcon = document.createElement('span');
+    deleteIcon.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    deleteIcon.className = 'delete-icon';
+    deleteIcon.addEventListener('click', function () {
+        codeBlock.remove();
+    });
+
+    // create the plus sign
+    const plusSign = document.createElement('span');
+    plusSign.innerHTML = '&#43;'; // Unicode for plus symbol
+    plusSign.className = 'plus-sign';
+    //upon click add function later that would add the code block to compiler region
+
+    // create the code text
+    const codeText = document.createElement('span');
+    codeText.textContent = droppedData;
+
+    //create the properties dropdown
+    const propertiesList = document.createElement('ul');
+    propertiesList.className = 'properties-list';
+
+    //create list items for the properties
+    const nameItem = document.createElement('li');
+    nameItem.textContent = 'Name';
+    nameItem.className = 'property-item';
+
+    const initialValueItem = document.createElement('li');
+    initialValueItem.textContent = 'Initial Value';
+    initialValueItem.className = 'property-item';
+
+    const dataTypeItem = document.createElement('li');
+    dataTypeItem.textContent = 'Data Type';
+    dataTypeItem.className = 'property-item';
+
+    const dimensionItem = document.createElement('li');
+    dimensionItem.textContent = 'Dimension';
+    dimensionItem.className = 'property-item';
+    
+
+    //hide properties list by default
+    propertiesList.style.display = 'none';
+
+    //toggle visibility of properties list for code block
+    codeBlock.addEventListener('click',function()
+    {
+        propertiesList.style.display=propertiesList.style.display === 'none' ? 'block' : 'none';
+    }); 
+
+    //append list items to proprties list
+    propertiesList.appendChild(nameItem);
+    propertiesList.appendChild(initialValueItem);
+    propertiesList.appendChild(dataTypeItem);
+    propertiesList.appendChild(dimensionItem);
+
+    // append the elements to the code block container
+    codeBlock.appendChild(codeText);
+    codeBlock.appendChild(propertiesList);
+    codeBlock.appendChild(deleteIcon);
+    codeBlock.appendChild(plusSign);
+    
+
+    // append the code block to the drop target
     dropArea.appendChild(codeBlock);
 
 }
@@ -33,7 +100,13 @@ function drop(event) {
 function dragOver(event)
 {
     event.preventDefault();
-    event.target.classList.add('dragover')
+    dropArea.classList.add('dragover')
+}
+
+//when the element is dragged away from the drop target
+function dragLeave(event) 
+{
+    dropArea.classList.remove('dragover'); //remove the 'dragover' class
 }
 
 let vCounter = 1;
