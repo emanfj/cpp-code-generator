@@ -1,39 +1,109 @@
-#menu {
-    display: flex; /* Use flexbox for the menu items */
-    scroll-behavior: smooth; /* Add smooth scrolling animation */
-    overflow: hidden; /* Hide the scrollbar */
-    position: relative; /* Set position for arrow buttons */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: rgb(199, 199, 229);
 }
 
-#menu-items{
-        display: flex;
-        transition: transform 0.3s ease;
-        -webkit-overflow-scrolling: touch;
-
-}
-#menu-items button {
-    min-width: 200px; /* Set the width of each menu item */
-    padding: 10px;
-    margin-right: 10px;
-    background-color: #ddd;
+header {
+  height: 7%;
 }
 
-#menu .arrow {
-    position: sticky;
-    top: 10%;
-    width: 30px;
-    height: 30px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
+section {
+  width:100%;
+  height: calc(100vh - 7% - 6%);
+  background-color: rgb(135, 111, 135);
+  display:flex;
 }
 
-#menu .arrow.left {
-    left: 0;
+footer {
+  height:6%;
 }
 
-#menu .arrow.right {
-    right: 0;
+.menu {
+  width: 200px;                                          
+  height: 100%;
+  overflow-y: auto;
+  background-color:aliceblue;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  position: relative;
+}
+
+li > div {
+  display: block;
+  padding: 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+li > div:hover {
+  background-color: #ccc;
+}
+
+
+.sub-menu {
+  display: none;
+  position: relative;
+  background-color: #f0f0f0;
+  color:#a39a9a;
+  margin-left: 10px;
+}
+
+
+li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu-2 {
+  display: none;
+  position: relative;
+  top: 0;
+  left:0;
+  background-color: #e6e0e0;
+  color:#a39a9a;
+  margin-left: 8px;
+}
+
+li > .sub-menu > li:hover > .sub-menu-2 {
+  display: block;
+}
+
+.draggable {
+  cursor:move;
+}
+
+#canvas {
+  left:200px;
+  background-color: rgb(164, 141, 164);
+  overflow-y: scroll;
+  /* scrollbar-width: thin;
+  scrollbar-color: purple rgba(0, 0, 0, 0.2); */
+  /* border: 1px dashed purple; */
+  display: block;
+  height: 100%;
+  width: 500px;
+  box-sizing: border-box;
+
+}
+
+#canvas::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+
+#canvas::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust the background color of the track */
+}
+
+#canvas::-webkit-scrollbar-thumb {
+  background-color: purple; /* Adjust the color of the thumb */
+}
+

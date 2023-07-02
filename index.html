@@ -7,27 +7,112 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="menu">
-        <button class="arrow left">&lt;</button>
-        <div id="menu-items">
-            <button>variable</button>
-            <button>function</button>
-            <button>loop</button>
-            <button>arithmetic operations</button>
-            <button>conditional statements</button>
-            <button>input</button>
-            <button>output</button>
-            <button>array</button>
-        </div>
-        <button class="arrow right">&gt;</button>
-    </div>
+    <header>
+
+    </header>
     <section>
-        <div></div>
-        <div></div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <div>Variable</div>
+                    <ul class="sub-menu">
+                        <li><div class="draggable" draggable="true">int</div></li>
+                        <li><div class="draggable" draggable="true">float</div></li>
+                        <li><div class="draggable" draggable="true">bool</div></li>
+                        <li><div class="draggable" draggable="true">char</div></li> 
+                        <li><div class="draggable" draggable="true">string</div></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <div>Loop</div>
+                    <ul class="sub-menu">
+                        <li><div class="draggable" draggable="true">for</div></li>
+                        <li><div class="draggable" draggable="true">while</div></li>
+                        <li><div class="draggable" draggable="true">do while</div></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="draggable" draggable="true">Function</div>
+                </li>
+                <li>
+                    <div>Operators</div>
+                    <ul class="sub-menu">
+                        <li><div>Arithmetic</div>
+                            <ul class="sub-menu-2">
+                                <li><div class="draggable" draggable="true">+</div></li>
+                                <li><div class="draggable" draggable="true">-</div></li>
+                                <li><div class="draggable" draggable="true">x</div></li>
+                                <li><div class="draggable" draggable="true">/</div></li>
+                                <li><div class="draggable" draggable="true">%</div></li>
+                                <li><div class="draggable" draggable="true">++</div></li>
+                                <li><div class="draggable" draggable="true">--</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Relational</div>
+                            <ul class="sub-menu-2">
+                                <li><div class="draggable" draggable="true">==</div></li>
+                                <li><div class="draggable" draggable="true">!=</div></li>
+                                <li><div class="draggable" draggable="true">></div></li>
+                                <li><div class="draggable" draggable="true"><</div></li>
+                                <li><div class="draggable" draggable="true">>=</div></li>
+                                <li><div class="draggable" draggable="true"><=</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Logical</div>
+                            <ul class="sub-menu-2">
+                                <li><div class="draggable" draggable="true">&&</div></li>
+                                <li><div class="draggable" draggable="true">||</div></li>
+                                <li><div class="draggable" draggable="true">!</div></li>
+                                <li><div class="draggable" draggable="true"><</div></li>
+                                <li><div class="draggable" draggable="true">>=</div></li>
+                                <li><div class="draggable" draggable="true"><=</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Miscellaneous</div>
+                            <ul class="sub-menu-2">
+                                <li><div class="draggable" draggable="true">=</div></li>
+                                <li><div class="draggable" draggable="true">&</div></li>
+                                <li><div class="draggable" draggable="true">.</div></li>
+                                <li><div class="draggable" draggable="true">-></div></li>
+                                <li><div class="draggable" draggable="true"><<</div></li>
+                                <li><div class="draggable" draggable="true">>></div></li>
+                                <li><div class="draggable" draggable="true">*</div></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div>Decision Making</div>
+                    <ul class="sub-menu">
+                        <li><div class="draggable" draggable="true">if</div></li>
+                        <li><div class="draggable" draggable="true">else if</div></li>
+                        <li><div class="draggable" draggable="true">else</div></li>
+                        <li><div class="draggable" draggable="true">switch</div></li>
+                        <li><div class="draggable" draggable="true">break</div></li>
+                        <li><div class="draggable" draggable="true">continue</div></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="draggable" draggable="true">Array</div>
+                </li>
+                <li>
+                    <div>Basic I/O</div>
+                    <ul class="sub-menu">
+                        <li><div class="draggable" draggable="true">cout</div></li>
+                        <li><div class="draggable" draggable="true">cin</div></li>
+                        <li><div class="draggable" draggable="true">getline</div></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="canvas">
+
+        </div>
+        <div id="toolbar"></div>
     </section>
-    <footer>
-        <p>copyright</p>
-    </footer>
+    <footer></footer>
+   
     <script src="script.js"></script>
 </body>
 </html>
