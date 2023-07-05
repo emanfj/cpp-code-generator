@@ -108,7 +108,7 @@ li > .sub-menu > li:hover > .sub-menu-2 {
   margin: 10px;
   position:relative;
   font-weight:bold;
-   
+  
 }
 
 .delete-icon {
@@ -134,9 +134,19 @@ li > .sub-menu > li:hover > .sub-menu-2 {
 }
 
 .properties-list {
-  padding:5px;
+  padding: 10px;
 }
 
-.property-item {
-  padding: 2px;
+
+.property-input {
+  padding: 5px;
+}
+
+.dropdown-input {
+  padding: 5px;
+  width:175px;
+}
+
+.property-input::placeholder {
+  color: #141313; /* Adjust the color to your desired dim color */
 }
