@@ -9,11 +9,11 @@ function dragStart(event) {
     event.dataTransfer.setData('text/plain', JSON.stringify(draggedData));
 }
 
-
 //add event listeners for drop functionality
 dropArea.addEventListener('drop',drop);
 dropArea.addEventListener('dragover',dragOver);
 dropArea.addEventListener('dragleave', dragLeave); 
+
 // when element is dropped within the target
 function drop(event) {
     // prevent the default behavior for dropped elements
@@ -49,38 +49,61 @@ function drop(event) {
     const propertiesForm = document.createElement('form');
     propertiesForm.className = 'properties-list';
 
-    //create input fields for the properties 
-    properties.forEach((property) => 
-    {
-        const inputField = document.createElement('input');
-        inputField.type = 'text';
-        inputField.placeholder = property;
-        inputField.className = 'property-input'; 
-        //append the input field to the properties form 
-        propertiesForm.appendChild(inputField);
-    });
+    // create input fields for the properties
+    properties.forEach((property) => {
+    let inputField;
+  
+    if (property === 'Data Type' || property === 'Return Type' || property === 'Dimension') {
+      //select input for specific properties
+      inputField = document.createElement('select');
+      inputField.className = 'dropdown-input';
+  
+      //add default placeholder option (not selectable)
+      const placeholderOption = document.createElement('option');
+      placeholderOption.disabled = true;
+      placeholderOption.selected = true;
+      placeholderOption.textContent = property;
+      placeholderOption.className = 'placeholder-option'; 
+      inputField.appendChild(placeholderOption);
+  
+      //adding options based on property type
+      if (property === 'Data Type') {
+        ['int', 'float','bool','char','string'].forEach((option) => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option;
+          inputField.appendChild(optionElement);
+        });
+  
+      } else if (property === 'Return Type') {
+        ['void', 'int'].forEach((option) => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option;
+          inputField.appendChild(optionElement);
+        });
+  
+      } else if (property === 'Dimension') {
+          const dimensionOptions = ['1D','2D', '3D'];
+          dimensionOptions.forEach(function (option) {
+            const optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            inputField.appendChild(optionElement);
+        });
+      }
+    } else {
+      //text input for other properties
+      inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.placeholder = property;
+      inputField.className = 'property-input';
+    }
+  
+    
+    propertiesForm.appendChild(inputField);
+  });
 
-
-    // const dimensionInput = document.createElement('select');
-    // dimensionInput.className = 'dropdown-input';
-    // // dimensionInput.name = 'Dimension';
-
-    // //default placeholder option (not selectable)
-    // const placeholderOption = document.createElement('option');
-    // placeholderOption.disabled = true;
-    // placeholderOption.selected = true;
-    // placeholderOption.textContent = 'Dimension'; // placeholder text
-    // placeholderOption.className = 'placeholder-option'; // add a CSS class
-    // dimensionInput.appendChild(placeholderOption);
-
-    // // populate the dimension dropdown with options
-    // const dimensionOptions = ['1D','2D', '3D'];
-    // dimensionOptions.forEach(function (option) {
-    //     const optionElement = document.createElement('option');
-    //     optionElement.value = option;
-    //     optionElement.textContent = option;
-    //     dimensionInput.appendChild(optionElement);
-    // });
 
     // hide properties form by default
     propertiesForm.style.display = 'none';
@@ -207,9 +230,9 @@ function generateCppCode(menuItem) {
       cppCode = 'else {\n\t// code block\n}';
       break;
 
-    case 'switch':
-      cppCode = 'switch (expression) {\n\tcase value1:\n\t\t// code block\n\t\tbreak;\n\tcase value2:\n\t\t// code block\n\t\tbreak;\n\tdefault:\n\t\t// code block\n\t\tbreak;\n}';
-      break;
+    // case 'switch':
+    //   cppCode = 'switch (expression) {\n\tcase value1:\n\t\t// code block\n\t\tbreak;\n\tcase value2:\n\t\t// code block\n\t\tbreak;\n\tdefault:\n\t\t// code block\n\t\tbreak;\n}';
+    //   break;
 
     case 'break':
       cppCode = 'break;';
@@ -245,7 +268,5 @@ function generateCppCode(menuItem) {
         break;
     }
   
-
-
     return { code: cppCode, properties };
   }
